@@ -93,7 +93,6 @@ router.beforeEach((to, from, next) => {
 		// fullName: decodeURIComponent(to.query.fullName),
 		// laborName: decodeURIComponent(to.query.laborName),
 	}
-	console.log('memberId', to.query.memberId)
 	// console.log(param);
 	store.commit("setMyModelURL", "https://zxsbzzqjk.qdszgh.cn/model.json");
 	store.commit("setMyMetadataURL", "https://zxsbzzqjk.qdszgh.cn/metadata.json");
