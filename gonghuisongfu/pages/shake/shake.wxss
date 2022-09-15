@@ -1,0 +1,90 @@
+.scan-container {
+  width: 100%;
+  height: 100vh;
+  background: url('https://res1.qdszgh.cn/%E9%87%91%E7%A7%8B%E6%AD%A3%E5%BD%93%E6%97%B6/shake-bg.png') no-repeat center;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shake-img {
+  width: 490rpx;
+  height: 490rpx;
+}
+
+.shake-btn {
+  position: absolute;
+  left: calc(50% - 130rpx);
+  bottom: 150rpx;
+  width: 260rpx;
+  height: 90rpx;
+  text-align: center;
+  line-height: 85rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #A60000;
+  background: url('https://res1.qdszgh.cn/%E9%9B%86%E6%B1%A4%E5%9C%86/shake-btn.png') no-repeat center;
+  background-size: 100% 100%;
+}
+
+.identity-box-btn-hover {
+  opacity: 0.8;
+}
+
+.tangyuanCard-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tangyuanCard-box-img {
+  width: 540rpx;
+}
+
+.tangyuanCard-box-btn {
+  margin-top: 46rpx;
+  width: 321rpx;
+  height: 90rpx;
+  text-align: center;
+  line-height: 85rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #A60000;
+  background: url('https://res1.qdszgh.cn/%E9%9B%86%E7%A6%8F%E5%8D%A1/open.png') no-repeat center;
+  background-size: 100% 100%;
+}
+
+.card-box-img-image {
+  width: 100%;
+  -webkit-animation: share_icon 1s linear;
+}
+
+@-webkit-keyframes share_icon {
+  0% {
+    -webkit-transform: scale(0.5);
+    opacity: 0
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1
+  }
+}
+
+.shake-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shake-box-img {
+  width: 490rpx;
+  height: 446rpx;
+}

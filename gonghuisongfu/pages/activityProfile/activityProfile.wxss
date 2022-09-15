@@ -1,0 +1,6 @@
+.activityProfile-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 36rpx 24rpx 0;
+  background: #FFEDD8;
+}

@@ -1,0 +1,15 @@
+<!--miniprogram/custom-tab-bar/index.wxml-->
+<view class="tbb">
+  <view class="tab-bar-item " data-path="{{list[0].pagePath}}" data-index="0" bindtap="switchTab">
+    <image src="{{selected === 0 ? list[0].selectedIconPath : list[0].iconPath}}"></image>
+    <view class="text" style="color: {{selected === 0 ? selectedColor : color}}">首页</view>
+  </view>
+  <view hover-class="view-active" class=" {{add}} " data-path="/pages/scan/scan" data-index="1" bindtap="switchTab">
+    <image src="/images/scan.png" wx:if="{{isScan}}"></image>
+    <image src="/images/shake.png" wx:else></image>
+  </view>
+  <view class="tab-bar-item " data-path="{{list[1].pagePath}}" data-index="2" bindtap="switchTab">
+    <image src="{{selected === 2 ? list[1].selectedIconPath : list[1].iconPath}}"></image>
+    <view class="text" style="color: {{selected === 2 ? selectedColor : color}}">我的</view>
+  </view>
+</view>

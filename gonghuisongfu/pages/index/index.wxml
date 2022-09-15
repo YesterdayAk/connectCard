@@ -1,0 +1,12 @@
+<view class="index-container">
+  <view class="scan-btn {{isIphoneX ? 'scan-btn-bottom' : ''}}" hover-class="scan-btn-hover" bindtap="toScan">
+    <image src="/images/goScan.png" wx:if="{{isScan}}"></image>
+    <image src="/images/goShake.png" wx:else></image>
+  </view>
+  <view class="go-home-btn {{isIphoneX ? 'go-home-btn-bottom' : ''}}">
+    <view hover-class="home-btn-hover" class="home-btn" bindtap="toHome">
+      <image src="/images/goHome.png"></image>
+      <view class="home-btn-text">去首页</view>
+    </view>
+  </view>
+</view>

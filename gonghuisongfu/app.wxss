@@ -1,0 +1,9 @@
+/**app.wxss**/
+view,
+text,
+rich-text,
+input,
+textarea,
+swiper-item {
+  box-sizing: border-box;
+}

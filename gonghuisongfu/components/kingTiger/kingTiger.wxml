@@ -1,0 +1,20 @@
+<!--components/generate-pic/generate-pic.wxml-->
+<!-- 合成后图片下载弹窗 -->
+<view class="generate-pic-box">
+  <view class="mask" wx:if="{{spinning}}">
+    <view class="mask-cont">
+      <view class="loading"></view><view class="loading-text">加载中...</view>
+    </view>
+  </view>
+  <block hidden="{{!spinning}}">
+    <canvas
+      class="canvas"
+      style="{{'width: ' + (canvasW) + 'px; height: ' + (canvasH) + 'px;'}}"
+      canvas-id="myCanvas"></canvas>
+      <view class="roleFamily-box">
+        <view class="roleFamily-box-btn" hover-class="identity-box-btn-hover" catchtap="save">
+          <image src="/images/tiger-download.png"></image>
+        </view>
+      </view>
+  </block>
+</view>

@@ -1,0 +1,32 @@
+<!-- 摇一摇 -->
+<view class="scan-container">
+  <image wx:if="{{!shakeShow}}" class="shake-img" src="https://res1.qdszgh.cn/%E9%87%91%E7%A7%8B%E6%AD%A3%E5%BD%93%E6%97%B6/shake-gif.gif"></image>
+  <view class="shake-btn" hover-class="identity-box-btn-hover" catchtap="doShake">摇一摇</view>
+</view>
+<!-- 摇到卡片弹窗 -->
+<page-container wx:if="{{tangyuanCardShow}}" show="{{tangyuanCardShow}}" position="center" custom-style="{{customStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="tangyuanCardleave">
+  <view class="tangyuanCard-box" bindtap="tangyuanCardFalse">
+    <view class="tangyuanCard-box-img" catchtap="cardTrue">
+      <image class="card-box-img-image" src="{{cardItem.tigerCardImg}}" mode="widthFix"></image>
+    </view>
+    <view class="tangyuanCard-box-btn" hover-class="identity-box-btn-hover" catchtap="onClickOverlay">再摇一张</view>
+  </view>
+</page-container>
+<!-- 摇到卡片弹窗 -->
+<!-- 未摇到卡片弹窗 -->
+<page-container wx:if="{{tangyuanNotCardShow}}" show="{{tangyuanNotCardShow}}" position="center" custom-style="{{customStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="tangyuanCardleave">
+  <view class="tangyuanCard-box" bindtap="tangyuanCardFalse">
+    <view class="tangyuanCard-box-img" catchtap="cardTrue">
+      <image class="card-box-img-image" src="{{cardItem.platformIntroduce}}" mode="widthFix"></image>
+    </view>
+    <view class="tangyuanCard-box-btn" hover-class="identity-box-btn-hover" catchtap="onClickOverlay">再摇一张</view>
+  </view>
+</page-container>
+<!-- 摇到卡片弹窗 -->
+<!-- 摇一摇弹窗 -->
+<page-container wx:if="{{shakeShow}}" show="{{shakeShow}}" position="center" custom-style="{{customStyle}}" bind:clickoverlay="shakeTrue" bind:beforeleave="shakeleave" overlay-style="{{shakeOverlayStyle}}">
+  <view class="shake-box">
+    <image class="shake-box-img" src="https://res1.qdszgh.cn/%E9%87%91%E7%A7%8B%E6%AD%A3%E5%BD%93%E6%97%B6/shake-custom.gif"></image>
+  </view>
+</page-container>
+<!-- 摇一摇弹窗 -->

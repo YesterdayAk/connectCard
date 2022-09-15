@@ -1,0 +1,64 @@
+.index-container {
+  width: 100%;
+  height: 100vh;
+  background: url('https://res1.qdszgh.cn/%E9%87%91%E7%A7%8B%E6%AD%A3%E5%BD%93%E6%97%B6/big-bg.png') no-repeat center;
+  background-size: 100% 100%;
+}
+
+.scan-btn {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 248rpx;
+}
+
+.scan-btn-bottom {
+  bottom: 306rpx;
+}
+
+.scan-btn-hover {
+  opacity: 0.8;
+}
+
+.scan-btn image {
+  display: block;
+  margin: 0 auto;
+  width: 398rpx;
+  height: 110rpx;
+}
+
+.go-home-btn {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 120rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.go-home-btn-bottom {
+  bottom: 158rpx;
+}
+
+.home-btn {
+  padding: 0 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-btn-hover {
+  background: rgba(238, 238, 238, 0.1);
+}
+
+.home-btn image {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.home-btn-text {
+  margin-top: 1px;
+  font-size: 24rpx;
+  color: #C92609;
+  line-height: 36rpx;
+}

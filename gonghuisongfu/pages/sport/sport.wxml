@@ -1,0 +1,4 @@
+<!--pages/sport/sport.wxml-->
+<view class="sport-container">
+  <web-view src="https://zxsbzydh.qdszgh.cn"></web-view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "king-tiger": "/components/kingTiger/kingTiger"
+  },
+  "disableScroll":true
+}

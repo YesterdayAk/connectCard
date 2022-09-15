@@ -1,0 +1,210 @@
+<!-- 首页 -->
+<view class="home-container" style="height: {{isIphoneX ? 'calc(100vh - 35px)' : '100vh'}};">
+  <view class="home-box">
+    <view class="home-box-top">
+      <view class="home-box-top-item {{index == active ? 'home-box-top-item-bg' : ''}}" style="display: {{index == 0 && !canHuSynthetic && !isHuSynthetic ? 'none' : 'block'}};" wx:for="{{tigerList}}" wx:for-index="index" wx:for-item="item" wx:key="index" bindtap="tigerChange" data-index="{{index}}">
+        <view class="home-box-top-item-image">
+          <image class="{{item.cardList.length == 0 ? 'gray-img' : ''}}" src="{{item.tigerImg}}"></image>
+        </view>
+        <view class="home-box-top-item-text">{{item.tigerName ? item.tigerName : ''}}{{item.cardList.length > 1 ? '*' + item.cardList.length : ''}}</view>
+      </view>
+    </view>
+    <view class="home-box-main" wx:if="{{tigerCardList.length >= 1 && tigerCardList[0].roleImg}}">
+      <swiper class="swiper" bindchange="swiperChange" current="{{tigerCardActive}}">
+        <block wx:for="{{tigerCardList}}" wx:key="index" wx:for-index="index">
+          <swiper-item class="swiper-item">
+            <view class="flip-container flip-center" data-num="{{index}}">
+              <view class="flipper">
+                <view class="front {{item.ifFirst ? '' : (item.istiger ? 'op1' : 'op0')}}">
+                  <image mode="heightFix" src="{{item.tigerImg}}"></image>
+                  <view class="flipper-flip">
+                    <!-- <image src="/images/flip.png"></image> -->
+                  </view>
+                </view>
+                <view class="back {{item.ifFirst ? '' : (item.istiger ? 'op0' : 'op1')}}">
+                  <image mode="heightFix" src="{{item.roleImg}}"></image>
+                  <view class="flipper-flip">
+                    <!-- <image src="/images/flip.png"></image> -->
+                  </view>
+                </view>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="home-box-main left-padding" wx:else>
+      <view class="home-box-main-canSynthetic" wx:if="{{active == 0 && canHuSynthetic && !isHuSynthetic}}">
+        <image class="home-box-main-canSynthetic-big-img" mode="heightFix" src="https://res1.qdszgh.cn/%E9%87%91%E7%A7%8B%E6%AD%A3%E5%BD%93%E6%97%B6/focaFamily.png"></image>
+        <view class="home-box-main-canSynthetic-small-img" hover-class="identity-box-btn-hover" bindtap="huSynthetic">
+          <image src="/images/hecheng.png"></image>
+        </view>
+      </view>
+      <view class="flip-container flip-center" wx:elif="{{tigerCardList.length == 1}}" bindtap="imgClick" data-num="0">
+        <view class="flipper" wx:if="{{active > 1}}">
+          <view class="front {{tigerCardList[0].ifFirst ? '' : (tigerCardList[0].istiger ? 'op1' : 'op0')}}">
+            <image src="{{tigerCardList[0].tigerImg}}"></image>
+            <view class="flipper-flip">
+              <!-- <image src="/images/flip.png"></image> -->
+            </view>
+          </view>
+          <view class="back {{tigerCardList[0].ifFirst ? '' : (tigerCardList[0].istiger ? 'op0' : 'op1')}}">
+            <image src="{{tigerCardList[0].roleImg}}"></image>
+            <view class="flipper-flip">
+              <!-- <image src="/images/flip.png"></image> -->
+            </view>
+          </view>
+        </view>
+        <view class="flipper" wx:else>
+          <view class="front">
+            <image src="{{tigerList[active].tigerImg}}"></image>
+          </view>
+        </view>
+      </view>
+      <view class="flip-container flip-center" wx:else>
+        <view class="flipper">
+          <view class="front">
+            <image src="{{tigerList[active].tigerImg}}" class="gray-img"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="home-box-bottom">
+      <view class="home-box-bottom-top" hover-class="home-box-bottom-top-hover" wx:if="{{tigerCardList.length > 0 && active == -6}}" bindtap="identityClick">
+        <image mode="heightFix" class="home-box-bottom-top-star" src="/images/star.png"></image>
+        <view class="home-box-bottom-top-text">立即变身</view>
+      </view>
+      <view class="home-box-bottom-top" hover-class="home-box-bottom-top-hover" wx:elif="{{tigerCardList.length > 0 && active == 0 && isHuSynthetic}}" bindtap="saveImgShow">
+        <image mode="heightFix" class="home-box-bottom-top-star" src="/images/save.png"></image>
+        <view class="home-box-bottom-top-text">保存图片</view>
+      </view>
+      <view class="home-box-bottom-top" hover-class="home-box-bottom-top-hover" wx:elif="{{tigerCardList.length > 0 && active > 0}}">
+        <image mode="heightFix" class="home-box-bottom-top-share" src="/images/share.png"></image>
+        <button class="home-box-bottom-top-text" open-type="share" id="1">赠送给朋友</button>
+      </view>
+      <view class="home-box-bottom-top" hover-class="home-box-bottom-top-hover" wx:elif="{{tigerCardList.length == 0 && active > 0}}">
+        <image mode="heightFix" class="home-box-bottom-top-friend" src="/images/friend.png"></image>
+        <button class="home-box-bottom-top-text" open-type="share" id="2">邀朋友赠送</button>
+      </view>
+      <view class="home-box-bottom-bottom">已有{{peopleItem.participateCount ? peopleItem.participateCount : 0}}人参与，{{peopleItem.goldenTigerCount ? peopleItem.goldenTigerCount : 0}}人已合成金秋主题卡</view>
+    </view>
+  </view>
+</view>
+<!-- 万能卡变身 -->
+<page-container wx:if="{{identityShow}}" show="{{identityShow}}" position="center" custom-style="{{identityCustomStyle}}" overlay-style="{{overlayStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="identityleave">
+  <view class="identity-box">
+    <view class="identity-box-title">选择一个需要变换的身份</view>
+    <view class="identity-box-text">*仅支持变身1次，变身后不可修改</view>
+    <swiper class="identity-box-swiper" bindchange="tySwiperChange" current="{{tyCardActive}}" indicator-dots="{{identityTigerListTwo.length > 0 ? true : false}}">
+      <block>
+        <swiper-item class="identity-box-swiper-item">
+          <view class="identity-box-card">
+            <view class="identity-box-card-item {{identityActive == index ? 'identity-box-card-item-border' : ''}}" wx:for="{{identityTigerListOne}}" wx:key="index" wx:for-index="index" data-index="{{index}}" bindtap="identitySelect">
+              <image class="card-item-big-img" src="{{item.imgUrl}}" mode="widthFix"></image>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+      <block wx:if="{{identityTigerListTwo.length > 0}}">
+        <swiper-item class="identity-box-swiper-item">
+          <view class="identity-box-card">
+            <view class="identity-box-card-item {{identityActive == (index + 6) ? 'identity-box-card-item-border' : ''}}" wx:for="{{identityTigerListTwo}}" wx:key="index" wx:for-index="index" data-index="{{index + 6}}" bindtap="identitySelect">
+              <image class="card-item-big-img" src="{{item.imgUrl}}" mode="widthFix"></image>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="identity-box-btn identity-box-btn1" wx:if="{{identityActive < 0}}">立即变身</view>
+    <view class="identity-box-btn identity-box-btn2" hover-class="identity-box-btn-hover" wx:elif="{{identityActive >= 0 && !identited}}" bindtap="identityChange">立即变身</view>
+    <view class="identity-box-btn identity-box-btn3" wx:else>立即变身</view>
+    <view class="identity-box-close" hover-class="identity-box-btn-hover" bindtap="closeIdentity">
+      <image src="/images/close.png"></image>
+    </view>
+  </view>
+</page-container>
+<!-- 万能卡变身 -->
+<!-- xx送你一张xx卡弹窗 -->
+<page-container wx:if="{{acceptCardShow}}" show="{{acceptCardShow}}" position="center" custom-style="{{acceptCardCustomStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="acceptCardleave">
+  <view class="acceptCard-box">
+    <image wx:if="{{everyDayCard.avatar}}" class="acceptCard-box-avater" src="{{everyDayCard.avatar}}"></image>
+    <image wx:else class="acceptCard-box-avater" src="/images/headImg.png"></image>
+    <view class="acceptCard-box-title">{{everyDayCard.nickName ? everyDayCard.nickName : ''}}</view>
+    <view class="acceptCard-box-text">送你一张 "{{everyDayCard.tigerCardName ? everyDayCard.tigerCardName : ''}}" 卡</view>
+    <image mode="widthFix" class="acceptCard-box-card" src="{{everyDayCard.tigerImg}}"></image>
+    <view class="acceptCard-box-btn" hover-class="identity-box-btn-hover" bindtap="acceptCard">开心收下</view>
+  </view>
+</page-container>
+<!-- xx送你一xx张xx卡弹窗 -->
+<!-- xx求“xx汤圆”卡1张！弹窗 -->
+<page-container wx:if="{{giveCardShow}}" show="{{giveCardShow}}" position="center" custom-style="{{acceptCardCustomStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="giveCardleave">
+  <view class="acceptCard-box">
+    <image wx:if="{{everyDayCard.avatar}}" class="acceptCard-box-avater" src="{{everyDayCard.avatar}}"></image>
+    <image wx:else class="acceptCard-box-avater" src="/images/headImg.png"></image>
+    <view class="acceptCard-box-title">{{everyDayCard.nickName ? everyDayCard.nickName : ''}}</view>
+    <view class="acceptCard-box-text">求“{{everyDayCard.tigerCardName ? everyDayCard.tigerCardName : ''}}”卡1张！谢谢你啦～</view>
+    <image mode="widthFix" class="acceptCard-box-card" src="{{everyDayCard.tigerImg}}"></image>
+    <view class="acceptCard-box-btn" hover-class="identity-box-btn-hover" bindtap="acceptCard">送给Ta</view>
+  </view>
+</page-container>
+<!-- xx求“xx汤圆”卡1张！弹窗 -->
+<!-- 卡片合成后的全家福卡弹窗 -->
+<page-container wx:if="{{kingTigerShow}}" show="{{kingTigerShow}}" position="center" custom-style="{{kingTigerCustomStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="kingTigerleave">
+  <view class="kingTiger-box" bindtap="kingTigerFalse">
+    <view catchtap="kingTigerTrue">
+      <!-- <king-tiger focaUserGrantId="{{tigerList.length > 0 ? (tigerList[0].cardList.length > 0 ? tigerList[0].cardList[0].focaUserGrantId : 0) : 0}}" userInfo="{{userInfo}}"></king-tiger> -->
+      <king-tiger userInfo="{{userInfo}}"></king-tiger>
+    </view>
+    <view class="kingTiger-box-close" hover-class="identity-box-btn-hover" catchtap="kingTigerFalse">
+      <image src="/images/tiger-close.png"></image>
+    </view>
+  </view>
+</page-container>
+<!-- 卡片合成后的全家福卡弹窗 -->
+<!-- 开奖弹窗 -->
+<page-container wx:if="{{prizeShow}}" show="{{prizeShow}}" position="center" custom-style="{{prizeCustomStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="prizeleave">
+  <view class="prize-box">
+    <view class="prize-box-title">
+      <view class="prize-box-title-text">{{awardInformation.awardLevel != 0 ? '恭喜获得' : ''}}{{awardInformation.awardName ? awardInformation.awardName : ''}}</view>
+    </view>
+    <!-- <view class="prize-box-btn" hover-class="identity-box-btn-hover" bindtap="acceptPrize">{{awardInformation.awardLevel != 0 && !awardInformation.infoPerfectFlag ? '立即领奖' : '好的'}}</view> -->
+    <view class="prize-box-btn" hover-class="identity-box-btn-hover" bindtap="acceptPrize">好的</view>
+  </view>
+</page-container>
+<!-- 开奖弹窗 -->
+
+<!-- 提交收货信息弹窗 -->
+<page-container wx:if="{{prizeAcceptShow}}" show="{{prizeAcceptShow}}" position="center" custom-style="{{prizeAcceptCustomStyle}}" bind:clickoverlay="onClickOverlay" bind:beforeleave="prizeAcceptleave">
+  <view class="prizeAccept-box" bindtap="prizeAcceptFalse">
+    <view class="prizeAccept-box-content" catchtap="prizeAcceptTrue">
+      <view class="prizeAccept-content-main">
+        <view class="prizeAccept-main-title">{{awardInformation.awardName ? awardInformation.awardName : ''}}</view>
+        <view class="prizeAccept-main-text">请填写收货信息，提交后不可修改</view>
+        <view class="prizeAccept-main-main">
+          <view class="prizeAccept-main-label">收货人</view>
+          <view class="prizeAccept-main-input">
+            <input value="{{userInfo.nickName ? userInfo.nickName : ''}}" class="weui-input" placeholder-class="input-placeholder" bindinput="bindNameInput" placeholder="请输入姓名" />
+          </view>
+          <view class="prizeAccept-main-label">电话</view>
+          <view class="prizeAccept-main-input">
+            <input value="{{userInfo.phonenumber ? userInfo.phonenumber : ''}}" class="weui-input" placeholder-class="input-placeholder" type="number" maxlength="11" bindinput="bindPhoneInput" placeholder="请输入电话" />
+          </view>
+          <view class="prizeAccept-main-label">邮寄地址</view>
+          <view class="prizeAccept-main-input">
+            <van-field value="{{userInfo.mailingAddress ? userInfo.mailingAddress : mailingAddress }}" name="mailingAddress" readonly clickable placeholder="请选择地址" placeholder-style="font-size: 28rpx;color: #999999;line-height:40rpx" custom-style="background:#FFFAEE;font-size:28rpx;color:#333;line-height40rpx;" bind:click-input="onClickAddress" />
+            <!-- <textarea class="weui-input" placeholder-class="input-placeholder" confirm-type="done" bindinput="bindAdressInput" placeholder="请输入邮寄地址" /> -->
+          </view>
+          <view class="prizeAccept-main-label">详细地址</view>
+          <view class="prizeAccept-main-input">
+            <input value="{{userInfo.mailingLocation ? userInfo.mailingLocation : mailingLocation}}" class="weui-input" placeholder-class="input-placeholder" bindinput="bindLocationInput" placeholder="请输入详细地址" />
+          </view>
+          <van-popup show="{{ showAddress }}" close-on-click-overlay="{{false}}" position="bottom">
+            <van-area area-list="{{ areaList }}" bind:cancel="onCancelAddress" bind:confirm="onConfirmAddress" />
+          </van-popup>
+        </view>
+      </view>
+    </view>
+    <view class="prizeAccept-box-btn" hover-class="identity-box-btn-hover" catchtap="messageSubmit">提交</view>
+  </view>
+</page-container>
+<!-- 提交收货信息弹窗 -->

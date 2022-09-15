@@ -1,0 +1,45 @@
+<view class="mine">
+  <view class="contentBox">
+    <view class="content">
+      <view class="people">
+        <view class="portrait">
+          <image src="{{userInfo.avatar ? userInfo.avatar : '/images/headImg.png'}}"></image>
+        </view>
+        <view class="info">
+          <text class="name">{{userInfo.nickName ? userInfo.nickName : ''}}</text>
+          <text class="phone">{{userInfo.phonenumber ? userInfo.phonenumber : '-'}}</text>
+        </view>
+      </view>
+      <view class="information">
+        <view class="tiger_card">
+          <text class="title">获得卡片</text>
+          <text class="number">{{userInfo.tigerFocaNumber ? userInfo.tigerFocaNumber : 0}}</text>
+        </view>
+        <!-- <view class="role_card">
+          <text class="title">点亮灯笼</text>
+          <text class="number">{{userInfo.roleFocaNumber ? userInfo.roleFocaNumber : '0'}}/8</text>
+        </view> -->
+      </view>
+      <view class="operation">
+        <view class="record" hover-class="operation-hover" bindtap="goCardRecord">
+          <text class="title">卡片记录</text>
+          <image src="../../images/arrow.png" style="width:16rpx;height:27rpx;"></image>
+        </view>
+        <view class="introduce" hover-class="operation-hover" bindtap="goActivityProfile">
+          <text class="title">活动说明</text>
+          <image src="../../images/arrow.png" style="width:16rpx;height:27rpx;"></image>
+        </view>
+        <view class="introduce" hover-class="operation-hover">
+          <text class="title">获得卡片方式</text>
+          <!-- <text class="title" bindtap="change">{{isScan ? "扫福" : "摇福"}}</text> -->
+          <view class="choice">
+            <van-radio-group value="{{ radio }}" bind:change="onChange" direction="horizontal">
+              <van-radio name="1" checked-color="#A40000" label-class="title">扫一扫</van-radio>
+              <van-radio name="2" checked-color="#A40000" label-class="title">摇一摇</van-radio>
+            </van-radio-group>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

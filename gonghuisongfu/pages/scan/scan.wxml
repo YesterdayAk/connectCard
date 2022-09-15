@@ -1,0 +1,4 @@
+<!-- 扫一扫 -->
+<view class="scan-container">
+  <web-view src="https://zxsbzzqjk.qdszgh.cn/#/video?memberId={{memberId}}&userIcon={{userIcon}}"></web-view>
+</view>

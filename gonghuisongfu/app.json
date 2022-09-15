@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/scan/scan",
+    "pages/mine/mine",
+    "pages/activityProfile/activityProfile",
+    "pages/cardRecord/cardRecord",
+    "pages/sport/sport"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F31818",
+    "navigationBarTitleText": "在知爱建 富强滨州",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-icon":"@vant/weapp/icon/index",
+    "van-tab":"@vant/weapp/tab/index",
+    "van-tabs":"@vant/weapp/tabs/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-area": "@vant/weapp/area/index"
+  },
+  "tabBar": {
+    "custom":true,
+    "color": "#FFFFFF",
+    "selectedColor": "#FFC700",
+    "backgroundColor": "#f1f1f1",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/images/icon1.png",
+        "selectedIconPath": "/images/icon1on.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/icon2.png",
+        "selectedIconPath": "/images/icon2on.png"
+      }
+    ]
+  }
+}

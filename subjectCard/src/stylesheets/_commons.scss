@@ -1,0 +1,14 @@
+.clearfix:after{
+    content:"";
+    display:block;
+    clear: both;
+    visibility: hidden;
+}
+.loading{
+    margin:20px 0;
+    display: flex;
+    justify-content: center;
+}
+.pt60{
+    padding-top:60px;
+}

@@ -1,0 +1,23 @@
+<view class="cardRecord-container">
+  <view class="cardRecord-main">
+    <view class="content">
+      <view class="topTab">
+        <view class="tabItem" bindtap="changeTab" data-active="1">
+          <view class="tabItem-content {{active == 1 ? 'tabItem-content-active' : ''}}">获得卡片</view>
+        </view>
+        <view class="tabItem" bindtap="changeTab" data-active="2">
+          <view class="tabItem-content {{active == 2 ? 'tabItem-content-active' : ''}}">送卡片</view>
+        </view>
+      </view>
+      <view class="recordBox" wx:if="{{cardRecard.length > 0}}">
+        <view class="recordItem" wx:for="{{cardRecard}}" wx:key="index" wx:for-index="index">
+          <view class="cardName">{{item.puffDescribe ? item.puffDescribe : ''}}<text wx:if="{{item.getType}}">{{item.getType}}</text></view>
+          <view class="time">{{item.createTime ? item.createTime : ''}}</view>
+        </view>
+      </view>
+      <view class="recordBox" wx:else>
+        <van-empty class="emptyImage" image="/images/empty.png" description="暂无记录" bindtap="emptyClick" />
+      </view>
+    </view>
+  </view>
+</view>
